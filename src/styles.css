@@ -22,7 +22,7 @@ h1 { margin: 12px 0 8px; font-size: clamp(31px, 9vw, 42px); line-height: 1.15; }
 .frog-art img { display: block; }
 .frog-mouth { position: absolute; z-index: 3; top: 17.2%; left: 41.1%; width: 4.8%; height: 4%; transform: translateX(-50%) scaleY(.05); transform-origin: center top; border-radius: 15% 25% 50% 50%; background: #2f1c19; opacity: 0; pointer-events: none; box-shadow: inset 0 -3px 0 #9b5450; }
 .mouth-opening { animation: mouth-open .28s ease-in-out infinite; }
-.laugh-video { position: absolute; z-index: 4; bottom: 5%; left: 50%; width: min(80vw, 400px); height: 68dvh; transform: translateX(-50%); object-fit: contain; mix-blend-mode: multiply; cursor: pointer; }
+.laugh-video { position: absolute; z-index: 4; bottom: 5%; left: 50%; width: min(80vw, 400px); height: 68dvh; transform: translateX(-50%); object-fit: contain; cursor: pointer; }
 @keyframes mouth-open { 0%, 100% { opacity: 0; transform: translateX(-50%) scaleY(.05); } 40%, 60% { opacity: 1; transform: translateX(-50%) scaleY(1); } }
 [data-hint] { position: absolute; z-index: 3; bottom: 13%; left: 50%; margin: 0; transform: translateX(-50%); color: #405b49; font-weight: 700; font-size: 18px; animation: pulse 1.6s ease-in-out infinite; }
 @keyframes pulse { 50% { transform: translateX(-50%) scale(1.06); opacity: .6; } }

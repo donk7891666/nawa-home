@@ -1,0 +1,10 @@
+{
+  "laugh": {
+    "animation": "/media/laugh-cropped.mp4",
+    "audio": "/media/laugh-audio.mp3"
+  },
+  "mouth": {
+    "audio": "/media/mouth-sound.mp3",
+    "beatsMs": [0, 160, 320, 480]
+  }
+}

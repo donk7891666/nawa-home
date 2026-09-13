@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>给小黄选一个房间</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px; background: #14130f; color: #fffdf5; font-family: "Microsoft YaHei", system-ui, sans-serif; }
+    h1 { margin: 0; text-align: center; font-size: clamp(26px,4vw,42px); }
+    .intro { margin: 12px auto 28px; text-align: center; color: #d5d1c5; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(220px,1fr)); gap: 18px; max-width: 1080px; margin: auto; }
+    .card { overflow: hidden; cursor: pointer; border: 3px solid transparent; border-radius: 18px; background: #26231e; transition: .16s ease; }
+    .card:hover, .card.selected { transform: translateY(-5px); border-color: #f4d143; box-shadow: 0 12px 30px #0008; }
+    .room { height: 355px; position: relative; overflow: hidden; }
+    .room::after { content: ""; position:absolute; left:0; right:0; bottom:0; height:31%; background: repeating-linear-gradient(90deg,#9b6138 0 35px,#ac7148 36px 70px); border-top: 5px solid #694324; }
+    .character { position:absolute; z-index:2; height: 285px; max-width:83%; object-fit:contain; bottom:23px; left:50%; transform:translateX(-50%); mix-blend-mode:multiply; }
+    .window { position:absolute; top:35px; right:24px; width:78px; height:100px; border:7px solid #f7e6ba; background:#91cceb; box-shadow: inset 0 0 0 3px #527ea4; }
+    .window:before,.window:after{content:"";position:absolute;background:#f7e6ba}.window:before{height:6px;left:0;right:0;top:40px}.window:after{width:6px;top:0;bottom:0;left:29px}
+    .lamp { position:absolute; z-index:1; top:61px; left:33px; width:56px; height:110px; border-bottom:7px solid #6d4730; background:linear-gradient(135deg,transparent 45%,#f5c84c 46% 54%,transparent 55%); }
+    .lamp:before { content:""; position:absolute; top:-26px; left:-10px; width:72px; height:38px; background:#f4c547; clip-path:polygon(15% 0,85% 0,100% 100%,0 100%); }
+    .plant { position:absolute; z-index:1; bottom:102px; left:24px; width:46px; height:75px; background:#795038; border-radius:45% 45% 18% 18%; }
+    .plant:before { content:"🌿"; position:absolute; font-size:68px; top:-63px; left:-12px; transform:rotate(-13deg); }
+    .cozy { background:linear-gradient(#ead3a4 0 70%,#dba963 70%); }
+    .cozy .lamp { display:block; }
+    .dream { background:linear-gradient(#b8d9ed 0 70%,#d1aa80 70%); }
+    .dream:before { content:"✦  ✧  ✦"; position:absolute; top:26px; left:30px; color:#fff; font-size:28px; opacity:.9; letter-spacing:12px; }
+    .dream .lamp { display:none; }
+    .retro { background:linear-gradient(#d7c9c0 0 70%,#b5855f 70%); }
+    .retro:before { content:""; position:absolute; left:24px; top:32px; width:90px; height:84px; border:8px solid #5d7a65; background: repeating-linear-gradient(135deg,#e9b457 0 12px,#e7905c 12px 24px); }
+    .retro .lamp { display:none; }
+    .card-body { padding: 16px 18px 18px; }
+    h2 { margin:0 0 5px; font-size:20px; } p { margin:0; color:#c9c3b7; line-height:1.5; }
+    @media(max-width:760px){ body{padding:18px}.cards{grid-template-columns:1fr}.room{height:300px}.character{height:250px} }
+  </style>
+</head>
+<body>
+  <h1>小黄的房间，哪种最对味？</h1>
+  <p class="intro">选一个氛围方向。正式版会让它安静站在这里，点到它才播放你的视频。</p>
+  <main class="cards">
+    <article class="card" data-choice="warm-room" onclick="toggleSelect(this)">
+      <div class="room cozy"><div class="lamp"></div><div class="window"></div><div class="plant"></div><img class="character" src="/files/character.jpg" alt="小黄"></div>
+      <div class="card-body"><h2>A. 温暖小客厅</h2><p>奶油黄墙面、木地板、台灯和绿植，像朋友家里。</p></div>
+    </article>
+    <article class="card" data-choice="dream-room" onclick="toggleSelect(this)">
+      <div class="room dream"><div class="window"></div><div class="plant"></div><img class="character" src="/files/character.jpg" alt="小黄"></div>
+      <div class="card-body"><h2>B. 清新日光房</h2><p>蓝天窗景、浅木地板、干净的白天感。</p></div>
+    </article>
+    <article class="card" data-choice="retro-room" onclick="toggleSelect(this)">
+      <div class="room retro"><div class="window"></div><div class="plant"></div><img class="character" src="/files/character.jpg" alt="小黄"></div>
+      <div class="card-body"><h2>C. 复古漫画房</h2><p>拼色墙、装饰画和更俏皮的玩具感。</p></div>
+    </article>
+  </main>
+</body>
+</html>

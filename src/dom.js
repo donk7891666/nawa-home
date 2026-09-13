@@ -23,8 +23,10 @@ export function renderApp(root, { onEnter, onTouch }, { basePath = import.meta.e
         <div class="room-window" aria-hidden="true"></div>
         <div class="room-plant" aria-hidden="true">🌿</div>
         <button class="frog-button" type="button" data-action="frog" aria-label="戳戳奶蛙">
-          <img src="${assetPath('media/nawa-idle-transparent.png', basePath)}" alt="奶蛙">
-          <span class="frog-mouth" data-frog-mouth aria-hidden="true"></span>
+          <span class="frog-art">
+            <img src="${assetPath('media/nawa-idle-transparent.png', basePath)}" alt="奶蛙">
+            <span class="frog-mouth" data-frog-mouth aria-hidden="true"></span>
+          </span>
         </button>
         <p data-hint>戳戳奶蛙</p>
       </section>`;

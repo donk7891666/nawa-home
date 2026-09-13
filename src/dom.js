@@ -1,10 +1,12 @@
-export function renderApp(root, { onEnter, onTouch }) {
+import { assetPath } from './asset-path.js';
+
+export function renderApp(root, { onEnter, onTouch }, { basePath = import.meta.env.BASE_URL } = {}) {
   const showWelcome = () => {
     root.innerHTML = `
       <section class="welcome-page" data-page="welcome">
-        <img class="expression expression-calm" src="/media/expression-calm.png" alt="奶蛙冷静表情">
-        <img class="expression expression-happy" src="/media/expression-happy.png" alt="奶蛙害羞开心表情">
-        <img class="welcome-frog" src="/media/nawa-idle-transparent.png" alt="奶蛙">
+        <img class="expression expression-calm" src="${assetPath('media/expression-calm.png', basePath)}" alt="奶蛙冷静表情">
+        <img class="expression expression-happy" src="${assetPath('media/expression-happy.png', basePath)}" alt="奶蛙害羞开心表情">
+        <img class="welcome-frog" src="${assetPath('media/nawa-idle-transparent.png', basePath)}" alt="奶蛙">
         <div class="welcome-copy">
           <p class="eyebrow">WELCOME</p>
           <h1>欢迎来到<br>奶蛙之家</h1>
@@ -21,7 +23,7 @@ export function renderApp(root, { onEnter, onTouch }) {
         <div class="room-window" aria-hidden="true"></div>
         <div class="room-plant" aria-hidden="true">🌿</div>
         <button class="frog-button" type="button" data-action="frog" aria-label="戳戳奶蛙">
-          <img src="/media/nawa-idle-transparent.png" alt="奶蛙">
+          <img src="${assetPath('media/nawa-idle-transparent.png', basePath)}" alt="奶蛙">
         </button>
         <p data-hint>戳戳奶蛙</p>
       </section>`;
@@ -37,7 +39,7 @@ export function renderApp(root, { onEnter, onTouch }) {
       const video = document.createElement('video');
       video.dataset.reaction = 'laugh';
       video.className = 'laugh-video';
-      video.src = '/media/laugh-cropped.mp4';
+      video.src = assetPath('media/laugh-cropped.mp4', basePath);
       video.muted = true;
       video.playsInline = true;
       video.addEventListener('click', onTouch);

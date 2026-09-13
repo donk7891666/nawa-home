@@ -16,6 +16,16 @@ it('renders the welcome copy and invokes enter when its button is pressed', () =
   expect(root.querySelector('[data-scene="room"]')).not.toBeNull();
 });
 
+it('uses the GitHub Pages project path for image assets', () => {
+  const root = document.createElement('main');
+  const view = renderApp(root, { onEnter: vi.fn(), onTouch: vi.fn() }, { basePath: '/nawa-home/' });
+
+  view.showWelcome();
+
+  expect(root.querySelector('.welcome-frog').getAttribute('src'))
+    .toBe('/nawa-home/media/nawa-idle-transparent.png');
+});
+
 it('hides the touch hint and shows the laugh video while reacting', () => {
   const root = document.createElement('main');
   const onTouch = vi.fn();

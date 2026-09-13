@@ -1,16 +1,21 @@
+import { assetPath } from './asset-path.js';
+
 const MOUTH_SOUNDS = [
-  '/media/mouth-sound-1.mp3',
-  '/media/mouth-sound-2.mp3',
-  '/media/mouth-sound-3.mp3',
-  '/media/mouth-sound-4.mp3',
+  'media/mouth-sound-1.mp3',
+  'media/mouth-sound-2.mp3',
+  'media/mouth-sound-3.mp3',
+  'media/mouth-sound-4.mp3',
 ];
 
 export function chooseReaction(random = Math.random) {
   return random() < 0.7 ? 'mouth' : 'laugh';
 }
 
-export function getMouthAudioPath(random = Math.random) {
-  return MOUTH_SOUNDS[Math.min(MOUTH_SOUNDS.length - 1, Math.floor(random() * MOUTH_SOUNDS.length))];
+export function getMouthAudioPath(random = Math.random, basePath) {
+  return assetPath(
+    MOUTH_SOUNDS[Math.min(MOUTH_SOUNDS.length - 1, Math.floor(random() * MOUTH_SOUNDS.length))],
+    basePath,
+  );
 }
 
 export function createMediaPlayer({ createAudio, startVisual, stopVisual, onError }) {

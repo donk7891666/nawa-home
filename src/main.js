@@ -2,13 +2,16 @@ import './styles.css';
 import { renderApp } from './dom.js';
 import { createGameController } from './game-controller.js';
 import { chooseReaction, createMediaPlayer, getMouthAudioPath } from './media.js';
+import { assetPath } from './asset-path.js';
 
 const root = document.querySelector('#app');
 let view;
 
 const player = createMediaPlayer({
   createAudio(kind) {
-    return new Audio(kind === 'laugh' ? '/media/laugh-audio.mp3' : getMouthAudioPath());
+    return new Audio(kind === 'laugh'
+      ? assetPath('media/laugh-audio.mp3')
+      : getMouthAudioPath());
   },
   startVisual(kind) {
     view.showReacting(kind);

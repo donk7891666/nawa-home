@@ -36,6 +36,11 @@ it('maps random values across four mouth sound files', () => {
   expect(getMouthAudioPath(() => 0.99)).toBe('/media/mouth-sound-4.mp3');
 });
 
+it('puts mouth sounds inside the GitHub Pages project path', () => {
+  expect(getMouthAudioPath(() => 0, '/nawa-home/'))
+    .toBe('/nawa-home/media/mouth-sound-1.mp3');
+});
+
 it('selects short mouth reactions 70 percent of the time', () => {
   expect(chooseReaction(() => 0.69)).toBe('mouth');
   expect(chooseReaction(() => 0.7)).toBe('laugh');

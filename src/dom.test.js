@@ -42,3 +42,14 @@ it('hides the touch hint and shows the laugh video while reacting', () => {
   video.click();
   expect(onTouch).toHaveBeenCalledOnce();
 });
+
+it('shows a visible mouth-opening reaction for short sounds', () => {
+  const root = document.createElement('main');
+  const view = renderApp(root, { onEnter: vi.fn(), onTouch: vi.fn() });
+
+  view.showIdle();
+  view.showReacting('mouth');
+
+  expect(root.querySelector('[data-frog-mouth]')).not.toBeNull();
+  expect(root.querySelector('[data-frog-mouth]').classList).toContain('mouth-opening');
+});
